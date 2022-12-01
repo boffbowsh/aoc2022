@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"log"
 	"os"
+	"sort"
 	"strconv"
 )
 
@@ -15,7 +16,7 @@ func main()	{
 	}
 	defer file.Close()
 
-	maxCalories := 0
+	elfCals := []int{}
 	cals := 0
 	// Create a new scanner and read the file line by line
 	scanner := bufio.NewScanner(file)
@@ -24,10 +25,7 @@ func main()	{
 		line := scanner.Text()
 
 		if line == "" {
-			// Check if the calories are higher than the max
-			if cals > maxCalories {
-				maxCalories = cals
-			}
+			elfCals = append(elfCals, cals)
 			cals = 0
 			continue
 		}
@@ -41,6 +39,10 @@ func main()	{
 		cals += c
 	}
 
-	// Print the max calories
-	log.Printf("Max calories: %d", maxCalories)
+	// Sort the elf calories
+	sort.Ints(elfCals)
+	// Add the top three together
+	total := elfCals[len(elfCals)-1] + elfCals[len(elfCals)-2] + elfCals[len(elfCals)-3]
+	// Print the total
+	log.Println(total)
 }
