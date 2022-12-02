@@ -16,14 +16,12 @@ func main() {
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
-	var strategy []string
-  for scanner.Scan() {
-    strategy = append(strategy, scanner.Text())
-  }
 
-  // Simulate each round of the game
   score := 0
-  for _, round := range strategy {
+
+  for scanner.Scan() {
+    round := scanner.Text()
+
     // Parse the round to get the opponent's move and your recommended move
     parts := strings.Split(round, " ")
     opponentMove := parts[0]
@@ -48,17 +46,17 @@ func simulateRound(opponentMove, recommendedMove string) string {
   rules := map[string]map[string]string{
     "A": {
       "X": "draw",
-      "Y": "lose",
-      "Z": "win",
-    },
-    "B": {
-      "X": "win",
-      "Y": "draw",
+      "Y": "win",
       "Z": "lose",
     },
-    "C": {
+    "B": {
       "X": "lose",
-      "Y": "win",
+      "Y": "draw",
+      "Z": "win",
+    },
+    "C": {
+      "X": "win",
+      "Y": "lose",
       "Z": "draw",
     },
   }
