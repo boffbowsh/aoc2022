@@ -47,19 +47,19 @@ func simulateRound(opponentMove, recommendedMove string) string {
   // Define the rules for the game
   rules := map[string]map[string]string{
     "A": map[string]string{
-      "A": "draw",
-      "X": "win",
+      "X": "draw",
       "Y": "lose",
+      "Z": "win",
     },
     "B": map[string]string{
-      "A": "lose",
-      "X": "draw",
-      "Y": "win",
+      "X": "win",
+      "Y": "draw",
+      "Z": "lose",
     },
     "C": map[string]string{
-      "A": "win",
       "X": "lose",
-      "Y": "draw",
+      "Y": "win",
+      "Z": "draw",
     },
   }
 
