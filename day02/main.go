@@ -48,18 +48,18 @@ func simulateRound(opponentMove, recommendedMove string) string {
   rules := map[string]map[string]string{
     "A": map[string]string{
       "A": "draw",
-      "Y": "win",
-      "Z": "lose",
-    },
-    "Y": map[string]string{
-      "A": "lose",
-      "Y": "draw",
-      "Z": "win",
-    },
-    "Z": map[string]string{
-      "A": "win",
+      "X": "win",
       "Y": "lose",
-      "Z": "draw",
+    },
+    "B": map[string]string{
+      "A": "lose",
+      "X": "draw",
+      "Y": "win",
+    },
+    "C": map[string]string{
+      "A": "win",
+      "X": "lose",
+      "Y": "draw",
     },
   }
 
@@ -71,8 +71,8 @@ func getScore(move, outcome string) int {
   // Define the scores for each move
   scores := map[string]int{
     "A": 1,
-    "Y": 2,
-    "Z": 3,
+		"B": 2,
+		"C": 3,
   }
 
   // Calculate the score for the round
