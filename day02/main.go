@@ -70,9 +70,9 @@ func simulateRound(opponentMove, recommendedMove string) string {
 func getScore(move, outcome string) int {
   // Define the scores for each move
   scores := map[string]int{
-    "A": 1,
-		"B": 2,
-		"C": 3,
+    "X": 1,
+		"Y": 2,
+		"Z": 3,
   }
 
   // Calculate the score for the round
