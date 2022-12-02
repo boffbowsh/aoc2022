@@ -1,4 +1,4 @@
-Paul Bowsher
+## Paul Bowsher
 Simplify this puzzle:
 
 Rock Paper Scissors is a game between two players. Each game contains many rounds; in each round, the players each simultaneously choose one of Rock, Paper, or Scissors using a hand shape. Then, a winner for that round is selected: Rock defeats Scissors, Scissors defeats Paper, and Paper defeats Rock. If both players choose the same shape, the round instead ends in a draw.
@@ -25,12 +25,12 @@ In this example, if you were to follow the strategy guide, you would get a total
 
 What would your total score be if everything goes exactly according to your strategy guide?
 
-
+## ChatGPT
 To solve this puzzle, you will need to read the strategy guide and then simulate each round of the game, keeping track of the score. For each round, you will need to use the strategy guide to determine what move you should make, and then calculate the score for that round based on the outcome of the round. Once you have simulated all of the rounds, you can calculate your total score by summing the scores for each round.
 
 Here is some pseudo-code that shows one way to solve this problem:
 
-Copy code
+```python
 score = 0
 
 # Read the strategy guide
@@ -50,19 +50,19 @@ for line in strategy_guide:
 
 # Print the total score
 print = total_score
+```
+
 You will need to implement the parse_move, simulate_round, and get_score functions in order to complete this solution. You can use the example above as a reference for how these functions should work.
 
 Once you have implemented these functions and run the code, it should output the total score for the tournament if you were to follow the strategy guide.
 
-
-
-
-Paul Bowsher
+## Paul Bowsher
 What would the simulate_round function look like in Go code?
 
+## ChatGPT
 Here is an example of how the simulate_round function could be implemented in Go:
 
-Copy code
+```go
 func simulateRound(opponentMove, recommendedMove string) string {
   // Define the rules for the game
   rules := map[string]map[string]string{
@@ -86,19 +86,19 @@ func simulateRound(opponentMove, recommendedMove string) string {
   // Return the outcome of the round
   return rules[opponentMove][recommendedMove]
 }
+```
+
 This function takes in the opponent's move and your recommended move as input, and returns the outcome of the round as a string (either "win", "lose", or "draw"). It uses a map to store the rules of the game, and then looks up the outcome based on the opponent's move and your recommended move.
 
 Note that this is just one possible implementation of the simulate_round function, and there may be other ways to implement it. You can modify this implementation or write your own if you prefer.
 
-
-
-
-Paul Bowsher
+## Paul Bowsher
 Solve the whole puzzle in Go
 
+## ChatGPT
 Here is a complete solution to the puzzle in Go, using the simulateRound function from the previous response:
 
-Copy code
+```go
 package main
 
 import (
@@ -200,23 +200,22 @@ func getScore(move, outcome string) int {
 
   return score
 }
+```
 This solution reads the strategy guide from standard input and then simulates each round of the game using the simulateRound function. It calculates the total score for the game and then prints it to standard output.
 
 To
 
-
-
-
-Paul Bowsher
+## Paul Bowsher
 The rules for the game are Rock Paper Scissors. A, B, C are rock, paper and scissors on the Player 1 side, and X Y Z is rock, paper, scissors on the Player 2 side
 
+## ChatGPT
 Thank you for clarifying the rules of the game. The solution I provided earlier assumes that A, B, and C represent Rock, Paper, and Scissors, respectively, on the Player 1 side, and that X, Y, and Z represent Rock, Paper, and Scissors, respectively, on the Player 2 side.
 
 If this is not correct, you will need to update the solution to reflect the correct rules of the game. For example, you could change the rules map in the simulateRound function to use the correct letters for each move.
 
 Here is an updated version of the simulateRound function that uses the letters you provided in the description of the game:
 
-Copy code
+```go
 func simulateRound(opponentMove, recommendedMove string) string {
   // Define the rules for the game
   rules := map[string]map[string]string{
@@ -240,6 +239,8 @@ func simulateRound(opponentMove, recommendedMove string) string {
   // Return the outcome of the round
   return rules[opponentMove][recommendedMove]
 }
+```
+
 This updated version of the function uses the letters A, B, C, X, Y, and Z to represent Rock, Paper, and Scissors on the Player 1 and Player 2 sides, respectively. You will need to update the rest of the solution to use these letters as well.
 
 Once you have updated the solution to use the correct letters for each move, you should be able to use it to solve the puzzle.
