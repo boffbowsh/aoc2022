@@ -25,13 +25,13 @@ func main() {
     // Parse the round to get the opponent's move and your recommended move
     parts := strings.Split(round, " ")
     opponentMove := parts[0]
-    recommendedMove := parts[1]
+    desiredOutcome := parts[1]
 
     // Simulate the round
-    outcome := simulateRound(opponentMove, recommendedMove)
+    recommendedMove := simulateRound(opponentMove, desiredOutcome)
 
     // Calculate the score for the round
-    roundScore := getScore(recommendedMove, outcome)
+    roundScore := getScore(recommendedMove, desiredOutcome)
 
     // Add the round score to the total score
     score += roundScore
@@ -41,44 +41,44 @@ func main() {
   fmt.Println(score)
 }
 
-func simulateRound(opponentMove, recommendedMove string) string {
+func simulateRound(opponentMove, desiredOutcome string) string {
   // Define the rules for the game
   rules := map[string]map[string]string{
     "A": {
-      "X": "draw",
-      "Y": "win",
-      "Z": "lose",
+      "Y": "A",
+      "Z": "B",
+      "X": "C",
     },
     "B": {
-      "X": "lose",
-      "Y": "draw",
-      "Z": "win",
+      "X": "A",
+      "Y": "B",
+      "Z": "C",
     },
     "C": {
-      "X": "win",
-      "Y": "lose",
-      "Z": "draw",
+      "Z": "A",
+      "X": "B",
+      "Y": "C",
     },
   }
 
   // Return the outcome of the round
-  return rules[opponentMove][recommendedMove]
+  return rules[opponentMove][desiredOutcome]
 }
 
 func getScore(move, outcome string) int {
   // Define the scores for each move
   scores := map[string]int{
-    "X": 1,
-		"Y": 2,
-		"Z": 3,
+    "A": 1,
+		"B": 2,
+		"C": 3,
   }
 
   // Calculate the score for the round
   score := scores[move]
   switch outcome {
-  case "win":
+  case "Z":
     score += 6
-  case "draw":
+  case "Y":
     score += 3
   }
 
