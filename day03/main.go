@@ -36,10 +36,14 @@ func main() {
     first := rucksack[:len(rucksack)/2]
     second := rucksack[len(rucksack)/2:]
 
+		// Set to keep track of the characters that have already been counted in this rucksack
+		counted := make(map[rune]bool)
+
     // Go through each character in the first compartment and check if it appears in the second compartment
     for _, char := range first {
-      if strings.ContainsRune(second, char) {
+      if !counted[char] && strings.ContainsRune(second, char) {
         charCount[char]++
+				counted[char] = true
       }
     }
   }
