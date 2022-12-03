@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
 )
 
 func main() {
@@ -19,47 +18,57 @@ func main() {
   // Create a scanner to read the file line by line
   scanner := bufio.NewScanner(file)
 
-  // Create a slice to store the lines
-  var rucksacks []string
+  var sum int
 
   // Loop over the lines in the file
   for scanner.Scan() {
-    // Append the line to the slice
-    rucksacks = append(rucksacks, scanner.Text())
-  }
+    set1 := lineToSet(scanner.Text())
+    scanner.Scan()
+    set2 := lineToSet(scanner.Text())
+    scanner.Scan()
+    set3 := lineToSet(scanner.Text())
+    intersectionSet := setIntersection(set1, set2, set3)
 
-  // Map to count the number of times each character appears in both compartments of each rucksack
-  charCount := make(map[rune]int)
-
-  for _, rucksack := range rucksacks {
-    // Split the rucksack into its two compartments
-    first := rucksack[:len(rucksack)/2]
-    second := rucksack[len(rucksack)/2:]
-
-    counted := make(map[rune]bool)
-
-    // Go through each character in the first compartment and check if it appears in the second compartment
-    for _, char := range first {
-      if !counted[char] && strings.ContainsRune(second, char) {
-        charCount[char]++
-        counted[char] = true
-      }
+    // Get only element in the set. Error if there's more than one element
+    var char rune
+    for char = range intersectionSet {
+      break
     }
-  }
 
-  // The sum of the priorities of the item types that appear in both compartments of each rucksack
-  var sum int
-
-  // Go through each character and its count in the map
-  for char, count := range charCount {
-    // Lowercase characters have priorities 1 through 26
-    if char >= 'a' && char <= 'z' {
-      sum += count * (int(char) - 'a' + 1)
-    } else {
-      // Uppercase characters have priorities 27 through 52
-      sum += count * (int(char) - 'A' + 27)
-    }
+    sum += charPriority(char)
   }
 
   fmt.Println(sum)
+}
+
+func charPriority(char rune) int {
+  if char >= 'a' && char <= 'z' {
+    return int(char) - 'a' + 1
+  } else {
+    return int(char) - 'A' + 27
+  }
+}
+
+func lineToSet(line string) map[rune]bool {
+  set := make(map[rune]bool)
+  for _, char := range line {
+    set[char] = true
+  }
+  return set
+}
+
+func setIntersection(sets ...map[rune]bool) map[rune]bool {
+  intersectionSet := make(map[rune]bool)
+  for char := range sets[0] {
+    intersectionSet[char] = true
+  }
+
+  for _, set := range sets {
+    for char := range intersectionSet {
+      if !set[char] {
+        delete(intersectionSet, char)
+      }
+    }
+  }
+  return intersectionSet
 }
