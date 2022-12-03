@@ -36,10 +36,13 @@ func main() {
     first := rucksack[:len(rucksack)/2]
     second := rucksack[len(rucksack)/2:]
 
+		counted := make(map[rune]bool)
+
     // Go through each character in the first compartment and check if it appears in the second compartment
     for _, char := range first {
-      if strings.ContainsRune(second, char) {
+      if !counted[char] && strings.ContainsRune(second, char) {
         charCount[char]++
+				counted[char] = true
       }
     }
   }
@@ -48,13 +51,13 @@ func main() {
   var sum int
 
   // Go through each character and its count in the map
-  for char, _ := range charCount {
+  for char, count := range charCount {
 		// Lowercase characters have priorities 1 through 26
 		if char >= 'a' && char <= 'z' {
-			sum += int(char) - 'a' + 1
+			sum += count * (int(char) - 'a' + 1)
 		} else {
 			// Uppercase characters have priorities 27 through 52
-			sum += int(char) - 'A' + 27
+			sum += count * (int(char) - 'A' + 27)
 		}
   }
 
