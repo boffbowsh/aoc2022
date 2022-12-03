@@ -59,4 +59,14 @@ It seems to have gone as far as it can though, so I'm back to human debugging fo
 
 The eventual solution was just where it had misunderstood the need use the count of item types, not just the priorities. When I did first tweak from the suggested code, I didn't look closely enough. It was ignoring the count already, I needed to start using it.
 
+## Part 2
+
 I tried feeding it part 2 of the puzzle, but the reply was truncated, even after 2 "Try Again"s.
+
+I returned to Copilot instead. I mostly described functions by name and had Copilot fill them out, and used a single comment for fetching a single element from a set. I hoped it'd handle the error case where there was more than one element, but it didn't seem to bother.
+
+## Thoughts
+
+Surely the next evolution for Copilot has to be a conversational mode where it is more like pairing with someone. Engineers rarely write entirely new code, we're more often modifying existing code to add new behaviour or fix a bug. Given that ChatGPT seems to be capable of understanding the context of existing code and modifying it based on a conversation, we're not far away from giving VSCode a Jira ticket number and having it give us a first guess at an implementation of the ticket.
+
+Tomorrow, depending on the puzzle, I'm going to try either getting ChatGPT to come up with a unit test first, or give it a unit test to satisfy.
