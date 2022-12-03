@@ -48,17 +48,14 @@ func main() {
   var sum int
 
   // Go through each character and its count in the map
-  for char, count := range charCount {
-    // If the character appears in both compartments of every rucksack, add its priority to the sum
-    if count == len(rucksacks) {
-      // Lowercase characters have priorities 1 through 26
-      if char >= 'a' && char <= 'z' {
-        sum += int(char) - 'a' + 1
-      } else {
-        // Uppercase characters have priorities 27 through 52
-        sum += int(char) - 'A' + 27
-      }
-    }
+  for char, _ := range charCount {
+		// Lowercase characters have priorities 1 through 26
+		if char >= 'a' && char <= 'z' {
+			sum += int(char) - 'a' + 1
+		} else {
+			// Uppercase characters have priorities 27 through 52
+			sum += int(char) - 'A' + 27
+		}
   }
 
   fmt.Println(sum)
