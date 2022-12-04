@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -16,8 +17,10 @@ func findOverlappingAssignments(input []string) int {
         assignment1 := strings.Split(assignments[0], "-")
         assignment2 := strings.Split(assignments[1], "-")
 
-        start1, end1 := assignment1[0], assignment1[1]
-        start2, end2 := assignment2[0], assignment2[1]
+        start1, _ := strconv.Atoi(assignment1[0])
+        end1, _ := strconv.Atoi(assignment1[1])
+        start2, _ := strconv.Atoi(assignment2[0])
+        end2, _ := strconv.Atoi(assignment2[1])
 
         if (start1 <= start2 && end1 >= end2) || (start2 <= start1 && end2 >= end1) {
             overlappingAssignments++
