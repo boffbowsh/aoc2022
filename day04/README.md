@@ -15,3 +15,11 @@ I asked it for some quotes for its experience of the puzzle:
 ## Part 2
 
 Part 2 was super duper piss easy and GPT solved it in one try.
+
+## Solving without code
+
+I tried providing the puzzle description and the puzzle input only to ChatGPT and asking it to return the answer, but it wasn't able to. Here was my prompt:
+
+> I'm going to provide a puzzle to you. Once you've understood the puzzle, just say "Understood". I'll then provide the input to the puzzle. When I've provided the input, please return the solution to the puzzle. You shoudn't send the puzzle input back to me at any time.
+
+My first few attempts, it just explained the puzzle to me. It also kept returning the puzzle input. The answer it provided was miles out.
