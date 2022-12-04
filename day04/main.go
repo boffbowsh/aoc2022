@@ -1,7 +1,10 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"log"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -23,14 +26,27 @@ func findOverlappingAssignments(input []string) int {
         end2, _ := strconv.Atoi(assignment2[1])
 
         if (start1 <= start2 && end1 >= end2) || (start2 <= start1 && end2 >= end1) {
-            overlappingAssignments++
-        }
+						overlappingAssignments++
+				}
     }
 
     return overlappingAssignments
 }
 
 func main() {
-    input := []string{"2-4,6-8", "2-3,4-5", "5-7,7-9", "2-8,3-7", "6-6,4-6", "2-6,4-8"}
+		// Open the input.txt file.
+		file, err := os.Open("input.txt")
+		if err != nil {
+				log.Fatal(err)
+		}
+		defer file.Close()
+
+		// Read each line into a slice of strings.
+		var input []string
+		scanner := bufio.NewScanner(file)
+		for scanner.Scan() {
+				input = append(input, scanner.Text())
+		}
+
     fmt.Println(findOverlappingAssignments(input)) // expected output: 2
 }
