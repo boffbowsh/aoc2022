@@ -25,8 +25,8 @@ func findOverlappingAssignments(input []string) int {
         start2, _ := strconv.Atoi(assignment2[0])
         end2, _ := strconv.Atoi(assignment2[1])
 
-        if (start1 <= start2 && end1 >= end2) || (start2 <= start1 && end2 >= end1) {
-						overlappingAssignments++
+        if (start1 <= end2 && end1 >= start2) || (start2 <= end1 && end2 >= start1) {
+					overlappingAssignments++
 				}
     }
 

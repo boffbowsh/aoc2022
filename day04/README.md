@@ -11,3 +11,7 @@ I asked it for some quotes for its experience of the puzzle:
 "And how well do you think we worked together to find the solution to the puzzle?"
 
 > I think we worked well together to find the solution to the puzzle. We went through the prompt and the test cases step by step, and I provided explanations and suggestions for how to fix the mistakes in the code. I also provided updated versions of the code that fixed the mistakes, and we were able to arrive at a correct solution together.
+
+## Part 2
+
+Part 2 was super duper piss easy and GPT solved it in one try.
