@@ -79,14 +79,20 @@ func main() {
 		}
 
 		// Move the crates
-		for i := 0; i < numCrates; i++ {
-			stacks[dest - 1] = append(stacks[dest - 1], stacks[src - 1][len(stacks[src - 1]) - i - 1])
-		}
+		fmt.Println(line)
+		fmt.Printf("Dest %d: %c\n", dest, stacks[dest - 1])
+		fmt.Printf("Src %d: %c\n", src, stacks[src - 1])
+		stacks[dest - 1] = append(stacks[dest - 1], stacks[src - 1][len(stacks[src - 1])-numCrates:]...)
 		stacks[src - 1] = stacks[src - 1][:len(stacks[src - 1])-numCrates]
+		fmt.Printf("Dest %d: %c\n", dest, stacks[dest - 1])
+		fmt.Printf("Src %d: %c\n", src, stacks[src - 1])
 	}
 
 	// Print the last crate on each stack
-	for _, stack := range stacks {
+	for i, stack := range stacks {
+		i = i
+		// fmt.Printf("%d: %c\n", i, stack)
+		// fmt.Printf("Stack %d: %d items, last item %d (%c)\n", i, len(stack), stack[len(stack) - 1], stack[len(stack) - 1])
 		fmt.Printf("%c", stack[len(stack) - 1])
 	}
 
