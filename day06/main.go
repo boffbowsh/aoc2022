@@ -13,18 +13,28 @@ func main() {
 		panic(err)
 	}
 
-	// Loop over all characters from the 4th to the last
-	for i := 3; i < len(input); i++ {
-		// Check if the last 4 characters are all different
-		if input[i] != input[i-1] &&
-			input[i] != input[i-2] &&
-			input[i] != input[i-3] &&
-			input[i-1] != input[i-2] &&
-			input[i-1] != input[i-3] &&
-			input[i-2] != input[i-3] {
-			// Print the offset
-			fmt.Printf("%d: %c\n", i+1, input[i-3:i+1])
-			break
+	// Get the start marker
+	startMarker := getStartMarker(input)
+	fmt.Println(startMarker)
+}
+
+func getStartMarker(input []byte) int {
+	// Loop over all characters from the 14th to the last
+	for i := 14; i < len(input); i++ {
+		valid := true
+Outer:
+		for x := i; x > i - 14; x-- {
+			for y := x - 1; y > i - 14; y-- {
+				if input[x] == input[y] {
+					valid = false
+					break Outer
+				}
+			}
+		}
+		if valid {
+			return i + 1
 		}
 	}
+
+	return 0
 }
